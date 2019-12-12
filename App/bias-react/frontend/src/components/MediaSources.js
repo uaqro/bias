@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { FeedDiv, MediaCard } from "../styles/components";
 import { MyContext } from "../context";
-import MY_SERVICE from "./services/index";
+import MY_SERVICE from "../services/index";
 
 export default class MediaSources extends Component {
   state = {

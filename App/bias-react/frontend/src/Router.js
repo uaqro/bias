@@ -7,9 +7,11 @@ import LogIn from "./components/LogIn";
 import SignUp from "./components/SignUp";
 import MediaSources from "./components/MediaSources";
 import NotFound from "./components/404/NotFound.js";
+import NavBar from "./components/NavBar";
 
 const Router = () => (
   <BrowserRouter>
+    <NavBar />
     <Switch>
       <Route exact path="/" component={Landing} />
       <Route exact path="/login" component={LogIn} />

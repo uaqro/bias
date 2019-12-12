@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { FeedDiv, ArticleCard } from "../styles/components";
+import { FeedDiv, ArticleLayout } from "../styles/components";
 import { MyContext } from "../context";
 
 export default class SavedArticles extends Component {
@@ -33,7 +33,7 @@ export default class SavedArticles extends Component {
             {this.feed
               .filter(article => article.headline.match(reg))
               .map((e, i) => (
-                <ArticleCard article={e} key={i} />
+                <ArticleLayout article={e} key={i} context={context} />
               ))}
           </FeedDiv>
         )}

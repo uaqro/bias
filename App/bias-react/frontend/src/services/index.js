@@ -41,8 +41,11 @@ const MY_SERVICE = {
   deleteArticle: async e => {
     return await service.post("/delete-article", e);
   },
-  getUserSavedArticles: async => {
-    return await service.get("/get-usr")
+  getUserSavedArticles: async () => {
+    return await service.get("/get-usr");
+  },
+  deleteComment: async deleteCommentObj => {
+    return await service.post("/delte-comment", deleteCommentObj);
   }
 };
 

@@ -58,18 +58,18 @@ exports.deleteSavedArticle = async (req, res) => {
 
 // ********** COMMENTS *****************
 
-exports.postNewComment = async (req, res) => {
-  const comment = req.body;
-  const { _id } = req.user;
-  const newComment = await Comment.create(comment);
-  const usr = await User.findById(_id);
-  usr.commentsPosted.push(newComment._id);
-  usr.save();
-  const art = await Article.findById(comment.article);
-  art.comments.push(newComment._id);
-  art.save();
-  res.status(201).json({ newComment });
-};
-exports.deleteComment = async (req, res) => {}; // <- delete comentario
-exports.updateComment = async (req, res) => {}; // <- Update
-exports.updatedCommentPost = async (req, res) => {}; // <- post del patch
+// exports.postNewComment = async (req, res) => {
+//   const comment = req.body;
+//   const { _id } = req.user;
+//   const newComment = await Comment.create(comment);
+//   const usr = await User.findById(_id);
+//   usr.commentsPosted.push(newComment._id);
+//   usr.save();
+//   const art = await Article.findById(comment.article);
+//   art.comments.push(newComment._id);
+//   art.save();
+//   res.status(201).json({ newComment });
+// };
+// exports.deleteComment = async (req, res) => {}; // <- delete comentario
+// exports.updateComment = async (req, res) => {}; // <- Update
+// exports.updatedCommentPost = async (req, res) => {}; // <- post del patch

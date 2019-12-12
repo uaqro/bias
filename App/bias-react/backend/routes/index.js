@@ -22,14 +22,14 @@ router.get("/saved-articles", getSavedArticles); // <- Feed de artículos guarda
 router.post("/save-article", saveArticle); // <- Guardar un nuevo artículo
 router.get("/get-usr", getUserSavedArticlesArray);
 router.post("/post-new-comment", postNewComment);
+router.get("/delete-comment", deleteComment);
 //router.get("/topics-cloud", getTopics); // <- página de hashtags diarios
 
 //********* SAVED ARTICLES CONTROLLERS **********
 
-router.get("/:id/delete-article", deleteSavedArticle); // <- elimina artículo de la lista // <- Post de comentarios
+router.get("/:id/delete-article", deleteSavedArticle); // <- elimina artículo de la lista // <- Post de comentarios // <- delete comentario
 
 // ********* COMMENT CONTROLLERS *********
-router.get("/:id/delte-comment", deleteComment); // <- delete comentario
 router.get("/:id/patch-comment", updateComment); // <- Update
 router.post("/:id/patched-comment", updatedCommentPost); // <- post del patch
 

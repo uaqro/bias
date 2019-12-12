@@ -7,15 +7,17 @@ function ArticleCard(props) {
     <ArticleLayout>
       <button
         onClick={e => {
-          this.props.context.state.usr.includes(article._id)
-            ? this.props.context.saveArticle(e)
+          this.props.context.state.usr.includes(this.props.article._id)
+            ? this.props.context.removeArticle(e)
             : this.props.context.deleteArticleSaved(e);
         }}
         value={
-          this.props.context.state.usr.includes(article._id) ? "Saved" : "Save"
+          this.props.context.state.usr.includes(this.props.article._id)
+            ? "Saved"
+            : "Save"
         }
-        id={article._id}
-        key={key}
+        id={this.props.article._id}
+        key={this.props.key}
       ></button>
       <h1>{this.props.article.headline}</h1>
       <h3>{this.props.article.resume}</h3>
@@ -28,10 +30,23 @@ function ArticleCard(props) {
         ))}
       </div>
       <div className="comments-wrapper">
-        {this.props.article.comments.map(c => (
+        {this.props.article.comments.map((c, i) => (
           <div className="comment-box">
             <p>{c.body}</p>
             <p>by:{c.poster.username}</p>
+            {String(this.props.context.state.user._id) ===
+            String(c.poster._id) ? (
+              <button
+                onClick={e => {
+                  this.props.context.deleteComment(e);
+                }}
+                id={c._id}
+                key={i}
+                articleinfo={this.props.article._id}
+              >
+                DeleteComment
+              </button>
+            ) : null}
           </div>
         ))}
         <form onSubmit={this.props.context.handleCommentSubmit}>
@@ -49,3 +64,4 @@ function ArticleCard(props) {
     </ArticleLayout>
   );
 }
+export default ArticleCard;

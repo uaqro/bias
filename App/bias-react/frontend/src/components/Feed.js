@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 //import { Link } from "react-router-dom";
-import { FeedDiv, ArticleCard } from "../styles/components";
+import { FeedDiv } from "../styles/components";
 import { MyContext } from "../context";
 import ArticleCard from "./ArticleCard";
 
@@ -16,6 +16,7 @@ export default class Feed extends Component {
   searchQuery = e => {
     this.setState({ searchValue: e.target.value });
   };
+
   // componentDidUpdate = () => {
   //   if (this.context.state.usr.length != this.state.feed.length) {
   //     this.setState({ feed: this.context.savedArticlesFeed });
@@ -44,4 +45,5 @@ export default class Feed extends Component {
     );
   }
 }
-SavedArticles.contextType = MyContext;
+
+Feed.contextType = MyContext;
