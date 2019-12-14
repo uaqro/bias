@@ -8,10 +8,15 @@ const Media = require("../models/Media.js");
 //***********NEWS FEEDS */
 exports.getFeed = async (req, res) => {
   const d = new Date();
-  d.setDate(d.getDate() - 1);
-  const articles = await Article.find({ published: { $gt: d } }).populate(
-    "fonts comments"
-  );
+  //d.setDate(d.getDate() - 1); query: { published: { $gt: d } }
+  const articles = await Article.find().populate({
+    path: "fonts",
+    populate: {
+      path: "media",
+      model: "media"
+    }
+  });
+  console.log(articles);
   res.status(200).json({ articles });
 };
 
@@ -40,8 +45,8 @@ exports.saveArticle = async (req, res) => {
 
 exports.getUserSavedArticlesArray = async (req, res) => {
   const { _id } = req.user;
-  const articlesArray = await User.findById(_id).keepArticle;
-  res.status(200).json({ articlesArray });
+  const user = await User.findById(_id);
+  res.status(200).json({ user });
 };
 exports.deleteSavedArticle = async (req, res) => {
   const { _id } = req.user;

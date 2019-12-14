@@ -20,7 +20,7 @@ class MyProvider extends Component {
     },
     user: {},
     usr: [], // ARRAY DE IDS DE LOS ARTÍCULOS GUARDADOS DEL USUARIO PARA EL DISPLAY DE LOS BOTONES
-    commment: {
+    comment: {
       body: "",
       article: ""
     },
@@ -46,24 +46,30 @@ class MyProvider extends Component {
     hamburger.classList.toggle("animate");
     if (menu.classList.contains("hide")) {
       menu.style.opacity = ".95";
-      menu.style.width = "100%";
-      menu.style.left = "0%";
+      menu.style.width = "500%";
+      menu.style.left = "-160%";
+      menu.classList.toggle("hide");
     } else {
       menu.style.opacity = "0";
       menu.style.width = "0%";
       menu.style.left = "110%";
+      menu.classList.toggle("hide");
     }
-    menu.classList.toggle("hide");
   }
 
   getFeed = async () => {
     const { data } = await MY_SERVICE.getFeed();
-    this.getSArt();
-    this.setState({ articlesfeed: data });
+    const p = await this.getSArt();
+    console.log(p);
+    console.log(data);
+    this.setState({ articlesfeed: data.articles });
   };
   getSArt = async () => {
     const { data } = await MY_SERVICE.getUserSavedArticles();
-    this.setState({ usr: data });
+    console.log(data.user);
+    const papitas = data.user.keepArticle;
+    console.log(data.user.keepArticle);
+    this.setState({ usr: papitas });
   };
   getSavedArticles = async () => {
     const { data } = await MY_SERVICE.getSavedArticles();
@@ -164,6 +170,7 @@ class MyProvider extends Component {
 
     window.localStorage.clear();
     this.setState({ loggedUser: false, user: {} });
+    this.props.history.push("/");
     cb();
   };
 

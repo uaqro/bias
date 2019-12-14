@@ -1,14 +1,16 @@
 const User = require("../models/User");
 
 exports.signup = async (req, res) => {
-  console.log("Is inside");
   await User.register(req.body, req.body.password)
     .then(user => {
       res.status(201).json({ user });
     })
     .catch(err => res.status(500).json({ err }));
 };
-
+exports.getUser = (req, res) => {
+  const user = User.findById(req.user._id);
+  res.status(200).json({ user });
+};
 exports.login = (req, res) => {
   const { user } = req;
   res.status(200).json({ user });

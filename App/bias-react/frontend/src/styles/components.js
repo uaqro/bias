@@ -1,9 +1,17 @@
 import styled, { createGlobalStyle } from "styled-components";
+import { animated } from "react-spring";
 
 export const colors = {
   primary: "black",
   accent: "orange",
   secondary: "#303030"
+};
+export const toggle = {
+  width: "1em",
+  height: "1em",
+  marginRight: 10,
+  cursor: "pointer",
+  verticalAlign: "middle"
 };
 export const GlobalStyles = createGlobalStyle`
     width: 100vw;
@@ -13,8 +21,65 @@ export const GlobalStyles = createGlobalStyle`
     overflow: hidden;
     box-sizing:border-box;
   }`;
-export const FeedDiv = styled.div``;
-export const ArticleLayout = styled.article``;
+export const FeedDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 0 5vw;
+  h1 {
+    padding-top: 3vh;
+    padding-bottom: 0.5vh;
+    border-bottom: 1px solid black;
+  }
+  input {
+    border-style: none;
+    border-bottom: 1px solid ${colors.secondary};
+    &:focus {
+      outline: none;
+    }
+    font-size: 1.1em;
+    margin-bottom: 5%;
+  }
+`;
+export const ArticleLayout = styled.article`
+  box-sizing: border-box;
+  border: 1px solid black;
+  padding: 0 5%;
+  img{
+    padding-top: 7%;
+    width: 25px;
+    height: 25px;
+  }
+  .article-head {
+    display: flex;
+    flex-direction: row;
+    wrap: no-wrap;
+    & > h1 {
+      padding-top: 1vh;
+      padding-bottom: 0;
+      width: 90%;
+      border-bottom: none;
+      text-decoration: underline;
+    }
+  }
+  input {
+    margin-right: 2%;
+  }
+  .fonts-wrapper{
+    padding-bottom: 5%;
+    box-sizing:border-box;
+    border-bottom: 1px solid black;
+    width: 50%;
+  }
+  button {
+    padding: 1% 3%;
+    border: 1px solid black;
+    &:hover {
+      color:white;
+      background-color: black;
+  }
+  
+`;
 export const SavedArticles = styled.div``;
 export const MediaCard = styled.div``;
 export const LogWrapper = styled.div`
@@ -22,6 +87,10 @@ export const LogWrapper = styled.div`
   flex-direction: column;
   padding: 5vh 10vw 0 10vw;
   text-align: left;
+  h1 {
+    border-bottom: 1px solid black;
+    padding-bottom: 1vh;
+  }
   p {
     display: flex;
     text-align: center;
@@ -50,16 +119,16 @@ export const LogWrapper = styled.div`
   }
 `;
 export const NavBarLayout = styled.div`
-  position: fixed;
-  margin-left: 85%;
-  box-sizing: border-box;
-  font-size: 0.7em;
-  background-color: white;
-  text-align: left;
-
-
+  left:80%;
+  margin: 0;
+  position:fixed;
+  margin-top: 12%;
+  img{
+    width: 25px;
+    height: 25px;
+  }
   .navlinks {
-    position: relative;
+    position:relative;
     top: 0%;
     left: 50%;
     opacity: 0;
@@ -68,10 +137,13 @@ export const NavBarLayout = styled.div`
     text-align: left;
     transition: 1s;
     background-color: white;
+    h1{
+      margin-left:5%;
+      text-decoration: underline;
+    }
   }
 
   .hamburgerMenuContainer {
-      margin-top:10%;
     position: relative;
     width: 35px;
     height: 35px;
@@ -82,17 +154,17 @@ export const NavBarLayout = styled.div`
   .hamburger::after,
   .hamburger::before {
     position: absolute;
-    width: 100%;
+    width:100%;
     height: 4px;
     background-color: black;
-    z-index: 10;
+    z-index: 5;
     content: "";
     transition: 0.45s;
   }
 
-//   .hamburger {
-//     top: 45%;
-//   }
+  .hamburger {
+    top: 45%;
+  }
 
   .hamburger::before {
     top: -200%;
@@ -119,31 +191,27 @@ export const NavBarLayout = styled.div`
   .hide {
     visibility: hidden;
   }
-  .navbar-elements-wrapper {
-    width: 0%;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    .navbar-item {
-        padding:0
-      display: flex;
-      flex-direction: row;
-      flex-wrap: no-wrap;
-      border: 1px solid black;
-      a {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: no-wrap;
-
-        img {
-          width: 25px;
-          height: 25px;
-          margin-right: 10%;
-        }
-      }
-    }
+  .top-items{
+    display:flex;
+    flex-direction:column;
+    width:100%;
   }
+  .navbar-item {
+    margin-left: 5%;
+    a{
+      text-decoration:none;
+      color:${colors.secondary}
+      display:flex;
+      flex-direction:row;
+      flex-wrap: no-wrap;
+    }
+    img{
+      padding-top: 3%;
+      margin-right: 5%;
+    }
+  
+ 
+}
 `;
 export const Home = styled.div`
   display: flex;
@@ -307,3 +375,34 @@ export const MainButton = styled.button`
       color:white;
       background-color: black;
     `;
+export const Frame = styled("div")`
+  position: relative;
+  padding: 4px 0px 0px 0px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow-x: hidden;
+  vertical-align: middle;
+  color: ${colors.secondary};
+  fill: ${colors.secondary};
+  p {
+    color: ${colors.secondary} important!;
+  }
+    a {
+      border: 1px solid white;
+      color: ${colors.secondary};
+      text-decoration: none;
+      display: block;
+    }
+  }
+`;
+export const Title = styled("span")`
+  vertical-align: middle;
+`;
+
+export const Content = styled(animated.div)`
+  will-change: transform, opacity, height;
+  margin-left: 6px;
+  padding: 0px 0px 0px 14px;
+  border-left: 1px dashed rgba(255, 255, 255, 0.4);
+  overflow: hidden;
+`;

@@ -16,21 +16,21 @@ router.get("/", (req, res, next) => {
 });
 
 //** DONE ROUTES & CONTROLLERS */
-router.get("/news-feed", getFeed); // <- Página de noticias principal
+router.get("/feed", getFeed); // <- Página de noticias principal
 router.get("/media", getMedia);
 router.get("/saved-articles", getSavedArticles); // <- Feed de artículos guardados
 router.post("/save-article", saveArticle); // <- Guardar un nuevo artículo
 router.get("/get-usr", getUserSavedArticlesArray);
-router.post("/post-new-comment", postNewComment);
-router.get("/delete-comment", deleteComment);
+// router.post("/post-new-comment", postNewComment);
+// router.get("/delete-comment", deleteComment);
 //router.get("/topics-cloud", getTopics); // <- página de hashtags diarios
 
 //********* SAVED ARTICLES CONTROLLERS **********
 
-router.get("/:id/delete-article", deleteSavedArticle); // <- elimina artículo de la lista // <- Post de comentarios // <- delete comentario
+// router.get("/:id/delete-article", deleteSavedArticle); // <- elimina artículo de la lista // <- Post de comentarios // <- delete comentario
 
-// ********* COMMENT CONTROLLERS *********
-router.get("/:id/patch-comment", updateComment); // <- Update
-router.post("/:id/patched-comment", updatedCommentPost); // <- post del patch
+// // ********* COMMENT CONTROLLERS *********
+// router.get("/:id/patch-comment", updateComment); // <- Update
+// router.post("/:id/patched-comment", updatedCommentPost); // <- post del patch
 
 module.exports = router;

@@ -29,6 +29,9 @@ const MY_SERVICE = {
   getFeed: async () => {
     return await service.get("/feed");
   },
+  getUser: async () => {
+    return await service.get("/profile");
+  },
   getSavedArticles: async () => {
     return await service.get("/saved-articles");
   },

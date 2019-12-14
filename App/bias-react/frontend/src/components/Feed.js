@@ -29,13 +29,15 @@ export default class Feed extends Component {
       <MyContext.Consumer>
         {context => (
           <FeedDiv>
+            <h1>News Feed</h1>
+            <tag>Search</tag>
             <input
               type="text"
               value={this.state.searchValue}
               onChange={this.searchQuery}
             />
-            {this.state.feed
-              .filter(article => article.headline.match(reg))
+            {context.articlesfeed
+              //.filter(article => article.headline.match(reg))
               .map((e, i) => (
                 <ArticleCard article={e} key={i} context={context} />
               ))}
