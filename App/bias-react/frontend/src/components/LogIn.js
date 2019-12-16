@@ -6,7 +6,7 @@ import { LogWrapper, MainButton } from "../styles/components";
 export default class LogIn extends Component {
   componentDidMount() {
     if (this.context.loggedUser) {
-      return this.props.history.push("/profile");
+      return this.props.history.push("/");
     }
   }
   render() {
@@ -20,7 +20,7 @@ export default class LogIn extends Component {
               <form
                 onSubmit={e => {
                   context.handleLogin(e, () => {
-                    this.props.history.push("/profile");
+                    this.props.history.push("/feed");
                   });
                 }}
               >
@@ -42,7 +42,7 @@ export default class LogIn extends Component {
               </form>
               <p>
                 If you don't have an account yet
-                <br /> you can create your account{" "}
+                <br /> you can create your account
                 <Link to="/signup">here</Link>
               </p>
             </div>

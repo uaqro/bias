@@ -36,7 +36,7 @@ const userSchema = new Schema(
     keepArticle: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Comments"
+        ref: "Article"
       }
     ]
   },

@@ -38,8 +38,8 @@ const MY_SERVICE = {
   postComment: async newcomment => {
     return await service.post("/post-new-comment", newcomment);
   },
-  saveArticle: async newarticle => {
-    return await service.post("/save-article", newarticle);
+  saveArticle: async id => {
+    return await service.post("/save-article", { id });
   },
   deleteArticle: async e => {
     return await service.post("/delete-article", e);
@@ -48,7 +48,10 @@ const MY_SERVICE = {
     return await service.get("/get-usr");
   },
   deleteComment: async deleteCommentObj => {
-    return await service.post("/delte-comment", deleteCommentObj);
+    return await service.post("/delete-comment", deleteCommentObj);
+  },
+  addArticle: async articleId => {
+    return await service.post("/add-article", { id: articleId });
   }
 };
 

@@ -19,8 +19,9 @@ router.get("/", (req, res, next) => {
 router.get("/feed", getFeed); // <- Página de noticias principal
 router.get("/media", getMedia);
 router.get("/saved-articles", getSavedArticles); // <- Feed de artículos guardados
-router.post("/save-article", saveArticle); // <- Guardar un nuevo artículo
+router.post("/add-article", saveArticle); // <- Guardar un nuevo artículo
 router.get("/get-usr", getUserSavedArticlesArray);
+router.post("/delete-article", deleteSavedArticle);
 // router.post("/post-new-comment", postNewComment);
 // router.get("/delete-comment", deleteComment);
 //router.get("/topics-cloud", getTopics); // <- página de hashtags diarios

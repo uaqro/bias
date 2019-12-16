@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Home } from "../styles/components";
+import { Home, H2styled } from "../styles/components";
 import { MyContext } from "../context";
 import { Link } from "react-router-dom";
 
@@ -11,13 +11,14 @@ export default class Landing extends Component {
           <Home>
             <h1>bias.</h1>
             <h3>AI powered News</h3>
-            <h1>What?</h1>
+            <hr />
+            <H2styled>What?</H2styled>
             <p>
               bias is a AI powered news source which will get you curated,
               organized and simplified information.
             </p>
-
-            <h1>How?</h1>
+            <hr />
+            <H2styled>How?</H2styled>
             <div className="stats-box">
               <div className="sub-stats-box">
                 <img src="./scrapp.png" alt="scrapppp" />
@@ -53,7 +54,7 @@ export default class Landing extends Component {
               </div>
             </div>
 
-            <h1>Why?</h1>
+            <h2>Why?</h2>
 
             <div className="stats-box">
               <div className="sub-stats-box">

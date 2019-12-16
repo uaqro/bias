@@ -17,14 +17,8 @@ const mediaSchema = new Schema({
   level: {
     type: String,
     enum: ["local", "state", "national"]
-  },
-  articles: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Font"
-    }
-  ]
+  }
 });
 
-const Media = mongoose.model("media", mediaSchema);
+const Media = mongoose.model("Media", mediaSchema);
 module.exports = Media;

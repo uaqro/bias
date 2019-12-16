@@ -46,8 +46,8 @@ class MyProvider extends Component {
     hamburger.classList.toggle("animate");
     if (menu.classList.contains("hide")) {
       menu.style.opacity = ".95";
-      menu.style.width = "500%";
-      menu.style.left = "-160%";
+      menu.style.width = "200%";
+      menu.style.left = "36%";
       menu.classList.toggle("hide");
     } else {
       menu.style.opacity = "0";
@@ -56,43 +56,40 @@ class MyProvider extends Component {
       menu.classList.toggle("hide");
     }
   }
-
+  getSArt = async () => {
+    const { data } = await MY_SERVICE.getUserSavedArticles();
+    const papitas = data.user.keepArticle;
+    this.setState({ usr: papitas });
+  };
   getFeed = async () => {
     const { data } = await MY_SERVICE.getFeed();
     const p = await this.getSArt();
-    console.log(p);
-    console.log(data);
     this.setState({ articlesfeed: data.articles });
   };
-  getSArt = async () => {
-    const { data } = await MY_SERVICE.getUserSavedArticles();
-    console.log(data.user);
-    const papitas = data.user.keepArticle;
-    console.log(data.user.keepArticle);
-    this.setState({ usr: papitas });
-  };
+
   getSavedArticles = async () => {
     const { data } = await MY_SERVICE.getSavedArticles();
-    await this.getSArt();
-    this.setState({ savedArticlesFeed: data.keepArticle });
+    this.getSArt();
+    console.log(data);
+    this.setState({ savedArticlesFeed: data.usr.keepArticle });
   };
 
   saveArticle = async e => {
     e.preventDefault();
     const newarticle = e.target.id;
-    const usrSavedArticles = this.state.usr.push(newarticle);
-    this.setState({ usr: usrSavedArticles });
-    const { data } = await MY_SERVICE.addarticle(newarticle);
+    const { data } = await MY_SERVICE.addArticle(newarticle);
+    this.setState({ usr: data.usr.keepArticle });
   };
   removeArticle = async e => {
     e.preventDefault(); //¿Será necesaria?
     const removedArticle = e.target.id;
-    await MY_SERVICE.deletearticle(removedArticle);
-    const i = this.state.usr.indexOf(removedArticle);
-    const y = this.state.savedArticlesFeed.indexOf(removedArticle);
-    const nSAF = this.state.savedArticlesFeed.splice(y, 1);
-    const da = this.state.usr.splice(i, 1);
-    this.setState({ usr: da, savedArticlesFeed: nSAF });
+    await MY_SERVICE.deleteArticle(removedArticle);
+    this.getSArt();
+    // const i = this.state.usr.indexOf(removedArticle);
+    // const y = this.state.savedArticlesFeed.indexOf(removedArticle);
+    // const nSAF = this.state.savedArticlesFeed.splice(y, 1);
+    // const da = this.state.usr.splice(i, 1);
+    // this.setState({ usr: da, savedArticlesFeed: nSAF });
   };
 
   // deleteComment = async e =>{
@@ -156,7 +153,6 @@ class MyProvider extends Component {
     e.preventDefault();
     MY_SERVICE.login(this.state.loginForm)
       .then(({ data }) => {
-        console.log(data);
         this.setState({ loggedUser: true, user: data.user });
         cb();
       })
@@ -170,7 +166,6 @@ class MyProvider extends Component {
 
     window.localStorage.clear();
     this.setState({ loggedUser: false, user: {} });
-    this.props.history.push("/");
     cb();
   };
 

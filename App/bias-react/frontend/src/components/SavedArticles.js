@@ -8,16 +8,16 @@ export default class SavedArticles extends Component {
     searchValue: ""
   };
   componentDidMount = async () => {
-    this.setState({ feed: this.context.getSavedArticles() });
+    this.context.getSavedArticles();
   };
   searchQuery = e => {
     this.setState({ searchValue: e.target.value });
   };
-  didComponentUpdate = () => {
-    if (this.context.savedArticlesFeed.length != this.state.feed.length) {
-      this.setState({ feed: this.context.savedArticlesFeed });
-    }
-  };
+  // didComponentUpdate = () => {
+  //   if (this.context.savedArticlesFeed.length != this.state.feed.length) {
+  //     this.setState({ feed: this.context.savedArticlesFeed });
+  //   }
+  // };
 
   render() {
     const reg = new RegExp(this.state.searchValue);
@@ -30,7 +30,7 @@ export default class SavedArticles extends Component {
               value={this.state.searchValue}
               onChange={this.searchQuery}
             />
-            {this.feed
+            {context.savedArticlesFeed
               .filter(article => article.headline.match(reg))
               .map((e, i) => (
                 <ArticleLayout article={e} key={i} context={context} />

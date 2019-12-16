@@ -11,7 +11,8 @@ export default class MediaSources extends Component {
   };
   componentDidMount = async () => {
     const { data } = await MY_SERVICE.getMedia();
-    this.setState({ media: data });
+    console.log(data.media);
+    this.setState({ media: data.media });
   };
   searchQuery = e => {
     this.setState({ searchValue: e.target.value });
@@ -22,28 +23,28 @@ export default class MediaSources extends Component {
       <MyContext.Consumer>
         {context => (
           <FeedDiv>
-            <input type="text" onChange={this.searchQuery} />
+            <h1>Media Sources</h1>
+            <tag>Search</tag>
+            <input
+              type="text"
+              onChange={this.searchQuery}
+              value={this.state.searchValue}
+            />
             {this.state.media
-              .filter(article => article.headline.match(reg))
+              //.filter(article => article.headline.match(reg))
               .map(m => (
                 <MediaCard>
-                  <img src={m.logo} alt="media-lolgo" />
-                  <h1>{m.name}</h1>
+                  <div className="media-card-header">
+                    <h1>{m.name}</h1>
+                  </div>
                   <h3>{m.description}</h3>
                   <div className="media-box">
                     <Link>Web</Link> <Link>Twitter</Link>
                     <Link>Facebook</Link>
                   </div>
                   <p>
-                    <strong>{m.level}</strong> {m.country},{m.state},{m.city}
+                    <strong>{m.level}</strong> {m.country}, {m.state}, {m.city}
                   </p>
-                  {m.articles.map(a => (
-                    <Link to={a.link}>
-                      <h1>{a.headline}</h1>
-                      <h3>{a.subHead}</h3>
-                    </Link>
-                    //   <img src = {a.media} alt="article-image" />
-                  ))}
                 </MediaCard>
               ))}
           </FeedDiv>

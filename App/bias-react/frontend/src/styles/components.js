@@ -6,6 +6,7 @@ export const colors = {
   accent: "orange",
   secondary: "#303030"
 };
+
 export const toggle = {
   width: "1em",
   height: "1em",
@@ -25,7 +26,7 @@ export const FeedDiv = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
-  padding: 0 5vw;
+  padding: 5vh 5vw;
   h1 {
     padding-top: 3vh;
     padding-bottom: 0.5vh;
@@ -46,7 +47,7 @@ export const ArticleLayout = styled.article`
   border: 1px solid black;
   padding: 0 5%;
   img{
-    padding-top: 7%;
+    padding-top: 10%;
     width: 25px;
     height: 25px;
   }
@@ -81,11 +82,27 @@ export const ArticleLayout = styled.article`
   
 `;
 export const SavedArticles = styled.div``;
-export const MediaCard = styled.div``;
+export const MediaCard = styled.div`
+  border: 1px solid ${colors.primary};
+  padding: 0 10vw;
+  text-align: left;
+  .media-card-header {
+    display: flex;
+    flex-direction: row;
+    img {
+      width: 25%;
+      height: 50px;
+      margin-left: 5%;
+    }
+    h1 {
+      margin: 0;
+    }
+  }
+`;
 export const LogWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 5vh 10vw 0 10vw;
+  padding: 10vh 10vw 0 10vw;
   text-align: left;
   h1 {
     border-bottom: 1px solid black;
@@ -118,11 +135,32 @@ export const LogWrapper = styled.div`
     }
   }
 `;
+
+export const NavBarBox = styled.div`
+  width: 100vw;
+  height: 60px;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+`;
+
 export const NavBarLayout = styled.div`
-  left:80%;
-  margin: 0;
-  position:fixed;
-  margin-top: 12%;
+  padding: 0 10%;
+  height: 90%;
+  .nav-aligment{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .logo p{
+    color: white;
+    font-size: 2rem;
+  }
   img{
     width: 25px;
     height: 25px;
@@ -140,26 +178,31 @@ export const NavBarLayout = styled.div`
     h1{
       margin-left:5%;
       text-decoration: underline;
+      color:${colors.primary};
     }
   }
 
   .hamburgerMenuContainer {
+    margin: 0;
     position: relative;
     width: 35px;
     height: 35px;
     cursor: pointer;
+    box-sizing: border-box;
   }
 
   .hamburger,
   .hamburger::after,
   .hamburger::before {
     position: absolute;
-    width:100%;
+    width: 100%;
     height: 4px;
-    background-color: black;
+    background-color: white;
     z-index: 5;
-    content: "";
+    content: '';
     transition: 0.45s;
+    display: flex;
+    flex-direction: column;
   }
 
   .hamburger {
@@ -209,10 +252,20 @@ export const NavBarLayout = styled.div`
       padding-top: 3%;
       margin-right: 5%;
     }
-  
- 
+
 }
 `;
+
+export const H2styled = styled.h2`
+  font-size: 1rem;
+  color: white;
+  background-color: black;
+  padding: 4px 10px;
+  text-align: left;
+  display: inline-block;
+  text-transform: uppercase;
+`;
+
 export const Home = styled.div`
   display: flex;
   flex-direction: column;
@@ -221,6 +274,7 @@ export const Home = styled.div`
   align-items: center;
   margin: 0;
   padding: 0;
+
   p {
     width: 80%;
     color:${colors.secondary}
@@ -306,9 +360,8 @@ export const Home = styled.div`
           background-color: black;
           align-self:center;
         }
-    p {
-    }
   }
+
 `;
 export const SignUpTag = styled.div`
   display: flex;
@@ -367,14 +420,55 @@ export const SignUpTag = styled.div`
   }
 `;
 
+export const btncustom = {
+  btnWidth: "250px !default",
+  btnHeight: "80px !default",
+  btnFull: "btnHeight+$btnWidth !default",
+  btnHalf: "btnFull/2 !default",
+  bgColor: "#eeeeee !default",
+  btncolordark: "shade(${btnColor}, 40%)"
+};
+
 export const MainButton = styled.button`
-    border: 2px solid black;
-    padding: 5% 10%;
-    font-size: 1em;
-    &:hover {
-      color:white;
-      background-color: black;
-    `;
+  border: 2px solid black;
+  padding: 5% 10%;
+  font-size: 1em;
+  ${btncustom.bgColor}: random-color(
+    $max: 200
+  );
+  color: tint(${btncustom.btnColor};
+
+  &:before,
+  &:after {
+    content: "";
+    @include absolute(0, 0, 0, 0);
+  }
+
+  &:before {
+    right: -50px;
+    border-right: 50px solid transparent;
+    border-bottom: ${btncustom.btnHeight} solid ${btncustom.btncolordark};
+    transform: translateX(-100%);
+  }
+
+  &:after {
+    left: -50px;
+    border-left: 50px solid transparent;
+    border-top: ${btncustom.btnHeight} solid ${btncustom.btncolordark};
+    transform: translateX(100%);
+  }
+
+  &:hover {
+    color: tint(${btncustom.btnColor}, 75%);
+
+    &:before {
+      transform: translateX(-49%);
+    }
+    &:after {
+      transform: translateX(49%);
+    }
+  }
+`;
 export const Frame = styled("div")`
   position: relative;
   padding: 4px 0px 0px 0px;

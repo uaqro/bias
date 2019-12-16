@@ -7,7 +7,7 @@ const fontSchema = new Schema({
   link: String,
   media: {
     type: Schema.Types.ObjectId,
-    ref: "Media"
+    ref: "media"
   }
 });
 

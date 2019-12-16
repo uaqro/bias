@@ -19,6 +19,7 @@ const Router = () => (
       <Route exact path="/saved-articles" component={SavedArticles} />
       <Route exact path="/feed" component={Feed} />
       <Route exact path="/media" component={MediaSources} />
+      <Route exact path="/logout" />
       <Route component={NotFound} />
     </Switch>
   </BrowserRouter>

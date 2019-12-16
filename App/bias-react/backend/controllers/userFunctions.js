@@ -12,16 +12,16 @@ exports.getFeed = async (req, res) => {
   const articles = await Article.find().populate({
     path: "fonts",
     populate: {
-      path: "media",
-      model: "media"
+      path: "Media",
+      model: "Media"
     }
   });
-  console.log(articles);
+  console.log(articles[0].fonts);
   res.status(200).json({ articles });
 };
 
 exports.getMedia = async (req, res) => {
-  const media = Media.find().populate("articles");
+  const media = await Media.find();
   res.status(200).json({ media });
 };
 
@@ -35,23 +35,33 @@ exports.getSavedArticles = async (req, res) => {
 //********* CRUD */
 
 exports.saveArticle = async (req, res) => {
-  const { article } = req.body;
+  const { id } = req.body;
   const { _id } = req.user;
-  const usr = await User.findById(_id);
-  usr.keepArticle.push(article);
-  usr.save();
+  const usr = await User.findByIdAndUpdate(
+    _id,
+    {
+      $push: { keepArticle: id }
+    },
+    { new: true }
+  );
   res.status(201).json({ usr });
 };
 
 exports.getUserSavedArticlesArray = async (req, res) => {
   const { _id } = req.user;
-  const user = await User.findById(_id);
+  const user = await User.findById(_id).populate({
+    path: "keepArticle",
+    populate: {
+      path: "fonts",
+      model: "Font"
+    }
+  });
   res.status(200).json({ user });
 };
 exports.deleteSavedArticle = async (req, res) => {
   const { _id } = req.user;
   const { article } = req.body;
-  const papa = await user.findByIdAndUpdate(_id, {
+  const papa = await User.findByIdAndUpdate(_id, {
     $pull: {
       keepArticle: {
         $in: article
