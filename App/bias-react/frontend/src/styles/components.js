@@ -4,7 +4,8 @@ import { animated } from "react-spring";
 export const colors = {
   primary: "black",
   accent: "orange",
-  secondary: "#303030"
+  secondary: "#303030",
+  gray: "#fff"
 };
 
 export const toggle = {
@@ -22,6 +23,18 @@ export const GlobalStyles = createGlobalStyle`
     overflow: hidden;
     box-sizing:border-box;
   }`;
+
+export const Myh3 = styled.h3`
+  font-family: "Old Standard TT", serif;
+  margin: 6px 0;
+`;
+
+export const Myhr = styled.hr`
+  border-color: ${colors.gray};
+  width: 80%;
+  opacity: 60%;
+`;
+
 export const FeedDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -147,7 +160,7 @@ export const NavBarBox = styled.div`
 `;
 
 export const NavBarLayout = styled.div`
-  padding: 0 10%;
+  padding: 0 6%;
   height: 90%;
   .nav-aligment{
     display: flex;
@@ -266,6 +279,17 @@ export const H2styled = styled.h2`
   text-transform: uppercase;
 `;
 
+export const H2styledInversed = styled.h2`
+  font-size: 1rem;
+  color: black;
+  background-color: white;
+  border: 2px black solid;
+  padding: 4px 10px;
+  text-align: left;
+  display: inline-block;
+  text-transform: uppercase;
+`;
+
 export const Home = styled.div`
   display: flex;
   flex-direction: column;
@@ -274,18 +298,55 @@ export const Home = styled.div`
   align-items: center;
   margin: 0;
   padding: 0;
+  @media (max-width: 768px) {
+    margin-top: 20%;
+  }
+  .home-sections {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p {
+      margin: 20px 0 50px 0;
+      width: 64%;
+      color: ${colors.secondary};
+    }
+  }
+  .stats-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+    p {
+      margin: 0;
+      width: 80%;
+    }
+  }
 
-  p {
+  .why-box {
+    margin-top: 40px !important;
+  }
+
+  .sub-stats-box {
     width: 80%;
-    color:${colors.secondary}
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+    p {
+      width: 80%;
+    }
+    img {
+      width: 75px;
+    }
   }
   h1:first-of-type {
     padding-top: 10vh;
     font-size: 4em;
-    color:${colors.primary}
+    color: ${colors.primary};
   }
-  h3{
-      color:${colors.secondary}
+  h3 {
+    color: ${colors.secondary};
   }
   h1 {
     font-size: 2.5em;
@@ -323,46 +384,24 @@ export const Home = styled.div`
   h3 {
     font-size: 2em;
   }
-  .stats-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 3vh;
-    p {
-      width: 80%;
-    }
-  }
-  .sub-stats-box {
-    width: 80%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    p {
-      width: 100%;
-    }
-    strong {
-      font-size: 1.5em;
-      padding-top: 5%;
-    }
-    img {
-      width: 75px;
-    }
-  }
   .register {
     padding-top: 3vh;
-    button{
-        border: 2px solid black;
-        padding: 1% 10%;
-        font-size: 1em;
-        background-color:white;
-        &:hover {
-          color:white;
-          background-color: black;
-          align-self:center;
-        }
   }
-
 `;
+
+export const PrimaryButton = styled.button`
+  border: 2px solid black;
+  padding: 6% 8%;
+  font-size: 1em;
+  color: white;
+  background-color: black;
+  width: 100%;
+  &:hover {
+    color: black;
+    background-color: white;
+  }
+`;
+
 export const SignUpTag = styled.div`
   display: flex;
   flex-direction: column;
