@@ -52,6 +52,9 @@ const MY_SERVICE = {
   },
   addArticle: async articleId => {
     return await service.post("/add-article", { id: articleId });
+  },
+  getAllMediaArticles: async id => {
+    return await service.get("/media-articles", { id: id });
   }
 };
 

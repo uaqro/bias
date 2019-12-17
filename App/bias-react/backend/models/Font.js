@@ -5,9 +5,10 @@ const fontSchema = new Schema({
   headline: String,
   subHead: String,
   link: String,
+  bias: Number,
   media: {
     type: Schema.Types.ObjectId,
-    ref: "media"
+    ref: "Media"
   }
 });
 

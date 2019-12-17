@@ -3,17 +3,11 @@ import React, { Component } from "react";
 import { FeedDiv } from "../styles/components";
 import { MyContext } from "../context";
 import ArticleCard from "./ArticleCard";
-import { PushSpinner } from "react-spinners-kit";
 
 export default class Feed extends Component {
   state = {
     feed: [],
-    searchValue: "",
-    loading: true
-  };
-  componentDidMount = async () => {
-    this.context.getFeed();
-    this.setState({ feed: this.context.articlesfeed });
+    searchValue: ""
   };
   searchQuery = e => {
     this.setState({ searchValue: e.target.value });
@@ -24,25 +18,20 @@ export default class Feed extends Component {
   //     this.setState({ feed: this.context.savedArticlesFeed });
   //   }
   // }
-
   render() {
-    const { loading } = this.state;
     const reg = new RegExp(this.state.searchValue);
     return (
       <MyContext.Consumer>
         {context => (
           <FeedDiv>
-            {loading ? (
-              <PushSpinner size={30} color="#686769" loading={loading} />
-            ) : null}
-            <h1>News Feed</h1>
+            <h1>{context.mediaDetail.name}</h1>
             <tag>Search</tag>
             <input
               type="text"
               value={this.state.searchValue}
               onChange={this.searchQuery}
             />
-            {context.articlesfeed
+            {context.allMediaArticles
               //.filter(article => article.headline.match(reg))
               .map((e, i) => (
                 <ArticleCard article={e} key={i} context={context} />

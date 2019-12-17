@@ -1,7 +1,16 @@
 import React, { Component } from "react";
 import { MyContext } from "../context";
 import { Link } from "react-router-dom";
-import { SignUpTag, MainButton } from "../styles/components";
+import {
+  SignUpTag,
+  MainButton,
+  H2styled,
+  Bordersections,
+  Myh3,
+  Myhr,
+  PrimaryButton,
+  CenterizeMe
+} from "../styles/components";
 
 function SignupContainer(props) {
   return (
@@ -9,25 +18,31 @@ function SignupContainer(props) {
       {context => (
         <SignUpTag>
           <h1>SignUp</h1>
-          <hr />
-          <div className="both-sides">
-            <div className="privacy-alert">
-              <h2>Your Privacy</h2>
-              <br />
-              <p>bias. has a strong privacy policy.</p>
-              <br />
+          <Bordersections>
+            <Myhr />
+
+            <H2styled>Your Privacy</H2styled>
+            <Myh3>Your data will not be sold to any kind of advertisers.</Myh3>
+            <Myhr />
+            <div className="privacy-policy-box">
+              <h3>
+                a strong privacy policy.
+                <br />
+              </h3>
               <ul>
                 <li>Your data will not be sold to any kind of advertisers.</li>
-                <br />
                 <li>You have control over your data.</li>
-                <br />
-                <li>Wanna know more? </li>
-                <br />
-                <br />
-                <Link>
-                  <MainButton>Check our privacy policy</MainButton>
-                </Link>
               </ul>
+              <H2styled>Wanna know more?</H2styled>
+              <Link>
+                <MainButton>Check our privacy policy</MainButton>
+              </Link>
+              <br />
+            </div>
+          </Bordersections>
+          <div className="both-sides">
+            <div className="privacy-alert">
+              <br />
             </div>
             <div className="signup-form">
               <h2>Create your account</h2>
@@ -87,11 +102,14 @@ function SignupContainer(props) {
                   value={context.formSignup.city}
                 />
                 <br />
-                <MainButton type="submit">Create my Account</MainButton>
+                <PrimaryButton type="submit">Create my Account</PrimaryButton>
               </form>
-              <p>
-                Do you already have an account? <Link to="/login">Log In</Link>
-              </p>
+              <CenterizeMe>
+                <p className="aligncenter-text">
+                  Do you already have an account?
+                </p>
+                <Link to="/login">Log In</Link>
+              </CenterizeMe>
             </div>
           </div>
         </SignUpTag>

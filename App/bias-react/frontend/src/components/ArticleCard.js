@@ -34,15 +34,32 @@ function ArticleCard(props) {
           <p>{props.article.summary}</p>
           <div className="fonts-wrapper">
             <Tree name="Fonts">
-              {props.article.fonts.map(f => (
-                <Tree name={f.media.name}>
-                  <a href={f.link}>
-                    <p>{f.headline}</p>
-                  </a>
-                </Tree>
-              ))}
+              {props.article.fonts.map(f => {
+                try {
+                  return (
+                    <>
+                      <Tree name={f.media.name}>
+                        <a href={f.link}>
+                          <p>{f.headline}</p>
+                        </a>
+                      </Tree>
+                    </>
+                  );
+                } catch {
+                  return (
+                    <>
+                      <Tree name="Unknow Font">
+                        <a href={f.link}>
+                          <p>{f.headline}</p>
+                        </a>
+                      </Tree>
+                    </>
+                  );
+                }
+              })}
             </Tree>
           </div>
+          <br />
           <div className="comments-wrapper">
             {props.article.comments.map((c, i) => (
               <div className="comment-box">

@@ -26,7 +26,9 @@ class MyProvider extends Component {
     },
     articlesfeed: [],
     savedArticlesFeed: [],
-    comment_article_update_key: 0
+    comment_article_update_key: 0,
+    allMediaArticles: [],
+    mediaDetail: {}
   };
   componentDidMount() {
     if (document.cookie) {
@@ -90,6 +92,16 @@ class MyProvider extends Component {
     // const nSAF = this.state.savedArticlesFeed.splice(y, 1);
     // const da = this.state.usr.splice(i, 1);
     // this.setState({ usr: da, savedArticlesFeed: nSAF });
+  };
+  getAllMediaArticles = async (e, cb) => {
+    e.preventDefault();
+    const { data } = await MY_SERVICE.getAllMediaArticles(e.target.id);
+
+    this.setState({ allMediaArticles: data.articles });
+    this.setState({ mediaDetail: data.m });
+    console.log(data.articles);
+    console.log(data.m);
+    cb();
   };
 
   // deleteComment = async e =>{
@@ -193,7 +205,10 @@ class MyProvider extends Component {
           removeArticle: this.removeArticle,
           // user: this.state.user,
           state: this.state,
-          toggleOpen: this.toggleOpen
+          toggleOpen: this.toggleOpen,
+          getAllMediaArticles: this.getAllMediaArticles,
+          allMediaArticles: this.state.allMediaArticles,
+          mediaDetail: this.state.mediaDetail
         }}
       >
         {this.props.children}

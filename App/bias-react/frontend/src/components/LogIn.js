@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { MyContext } from "../context";
 import { Link } from "react-router-dom";
-import { LogWrapper, MainButton } from "../styles/components";
+import { LogWrapper, PrimaryButton } from "../styles/components";
 
 export default class LogIn extends Component {
   componentDidMount() {
@@ -38,13 +38,14 @@ export default class LogIn extends Component {
                   onChange={e => context.handleInput(e, "loginForm")}
                 />
                 <br />
-                <MainButton type="submit">Log Me In!</MainButton>
+                <PrimaryButton type="submit">Log Me In!</PrimaryButton>
               </form>
-              <p>
-                If you don't have an account yet
-                <br /> you can create your account
-                <Link to="/signup">here</Link>
-              </p>
+              <div className="create-ac">
+                <p>
+                  If you don't have an account yet, you can create your account
+                  <Link to="/signup"> here</Link>
+                </p>
+              </div>
             </div>
           </LogWrapper>
         )}

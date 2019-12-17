@@ -15,14 +15,15 @@ export const toggle = {
   cursor: "pointer",
   verticalAlign: "middle"
 };
+
 export const GlobalStyles = createGlobalStyle`
     width: 100vw;
     height: 100vh;
     max-width: 100%;
     max-height: 100%;
     overflow: hidden;
-    box-sizing:border-box;
-  }`;
+    box-sizing: border-box;
+`;
 
 export const Myh3 = styled.h3`
   font-family: "Old Standard TT", serif;
@@ -39,10 +40,11 @@ export const FeedDiv = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
-  padding: 5vh 5vw;
-  h1 {
+  padding: 10vh 5vw;
+  h3 {
     padding-top: 3vh;
     padding-bottom: 0.5vh;
+    font-size: 2em;
     border-bottom: 1px solid black;
   }
   input {
@@ -97,7 +99,7 @@ export const ArticleLayout = styled.article`
 export const SavedArticles = styled.div``;
 export const MediaCard = styled.div`
   border: 1px solid ${colors.primary};
-  padding: 0 10vw;
+  padding: 0 9vw;
   text-align: left;
   .media-card-header {
     display: flex;
@@ -112,6 +114,37 @@ export const MediaCard = styled.div`
     }
   }
 `;
+
+export const Mediabox = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  button {
+    font-size: 1rem;
+    background-color: black;
+    padding: 4px 8px;
+    text-align: left;
+    display: inline-block;
+    text-transform: uppercase;
+    border: 1px solid black;
+    @media (max-width: 414px) {
+      font-size: 0.86rem;
+    }
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+  button:hover {
+    background-color: white;
+  }
+  i {
+    color: white;
+    padding-right: 6px;
+  }
+`;
+
 export const LogWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -122,9 +155,7 @@ export const LogWrapper = styled.div`
     padding-bottom: 1vh;
   }
   p {
-    display: flex;
     text-align: center;
-    align-self: center;
   }
 
   form {
@@ -135,15 +166,15 @@ export const LogWrapper = styled.div`
     tag {
       opacity: 50%;
       margin-bottom: 2%;
-      font-size: 0.9em;
+      font-size: 1.2em;
     }
     input {
       border-style: none;
+      font-size: 1.4em;
       border-bottom: 1px solid ${colors.secondary};
       &:focus {
         outline: none;
       }
-      font-size: 1.1em;
       margin-bottom: 5%;
     }
   }
@@ -301,17 +332,7 @@ export const Home = styled.div`
   @media (max-width: 768px) {
     margin-top: 20%;
   }
-  .home-sections {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    p {
-      margin: 20px 0 50px 0;
-      width: 64%;
-      color: ${colors.secondary};
-    }
-  }
+
   .stats-box {
     display: flex;
     flex-direction: column;
@@ -402,14 +423,58 @@ export const PrimaryButton = styled.button`
   }
 `;
 
+export const Bordersections = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  p {
+    margin: 20px 0 50px 0;
+    width: 64%;
+    color: ${colors.secondary};
+  }
+`;
+
 export const SignUpTag = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 5vh 10vw 0 10vw;
-  
+  padding: 10vh 10vw 0 10vw;
+  margin-bottom: 10vw;
+  z-index: -10;
+  hr{
+    width: 100%;
+  }
   h1 {
     text-align: left;
     align-items: flex-start;
+  }
+  h3{
+    text-align: center;
+    font-size: .9rem;
+    color: black;
+    text-transform: uppercase;
+  }
+  .privacy-policy-box{
+    box-size: border-box
+    margin-top: 20px;
+    padding: 10px 10px  20px 10px !important;
+    background-color: white;
+    border: 2px black solid;
+    padding: 4px 10px;
+    display: inline-block;
+    h3{
+      line-height: 30px;
+
+    }
+    ul{
+      list-style: none;
+      padding: 0;
+      width: 90%;
+      margin: 0 auto;
+      li{
+        padding: 10px;
+      }
+    }
   }
   hr {
     border: 3px solid black:
@@ -454,9 +519,20 @@ export const SignUpTag = styled.div`
   tag {
     padding-bottom: 2vh;
   }
-  input {
-    border-radius: ;
+  p{
+    margin-bottom: 8px;
+    alignt-text: center;
+
   }
+
+`;
+
+export const CenterizeMe = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  alignt-text: center;
+  width: 100%;
 `;
 
 export const btncustom = {

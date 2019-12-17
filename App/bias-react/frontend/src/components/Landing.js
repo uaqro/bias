@@ -5,7 +5,8 @@ import {
   Myh3,
   Myhr,
   H2styledInversed,
-  PrimaryButton
+  PrimaryButton,
+  Bordersections
 } from "../styles/components";
 import { MyContext } from "../context";
 import { Link } from "react-router-dom";
@@ -19,7 +20,7 @@ export default class Landing extends Component {
             <h1>bias.</h1>
             <h3>AI powered News</h3>
             <br />
-            <section className="home-sections">
+            <Bordersections>
               <Myhr />
               <Myh3>What?</Myh3>
               <Myhr />
@@ -27,8 +28,8 @@ export default class Landing extends Component {
                 bias is a AI powered news source which will get you curated,
                 organized and simplified information.
               </p>
-            </section>
-            <section className="home-sections">
+            </Bordersections>
+            <Bordersections>
               <Myhr />
               <Myh3>How?</Myh3>
               <Myhr />
@@ -64,8 +65,8 @@ export default class Landing extends Component {
                   <br />
                 </div>
               </div>
-            </section>
-            <section className="home-sections">
+            </Bordersections>
+            <Bordersections>
               <Myhr />
               <Myh3>Why?</Myh3>
               <Myhr />
@@ -102,7 +103,7 @@ export default class Landing extends Component {
                   <br />
                 </div>
               </div>
-            </section>
+            </Bordersections>
             <Myhr />
             <div className="register">
               <p>Register for Free</p>

@@ -8,7 +8,8 @@ const {
   deleteSavedArticle,
   postNewComment,
   deleteComment,
-  getUserSavedArticlesArray
+  getUserSavedArticlesArray,
+  getMediaArticles
 } = require("../controllers/userFunctions");
 
 router.get("/", (req, res, next) => {
@@ -22,6 +23,7 @@ router.get("/saved-articles", getSavedArticles); // <- Feed de artículos guarda
 router.post("/add-article", saveArticle); // <- Guardar un nuevo artículo
 router.get("/get-usr", getUserSavedArticlesArray);
 router.post("/delete-article", deleteSavedArticle);
+router.get("/media-articles", getMediaArticles);
 // router.post("/post-new-comment", postNewComment);
 // router.get("/delete-comment", deleteComment);
 //router.get("/topics-cloud", getTopics); // <- página de hashtags diarios

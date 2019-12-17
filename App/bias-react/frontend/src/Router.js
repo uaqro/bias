@@ -7,6 +7,7 @@ import LogIn from "./components/LogIn";
 import SignUp from "./components/SignUp";
 import MediaSources from "./components/MediaSources";
 import NotFound from "./components/404/NotFound.js";
+import MediaArticles from "./components/MediaArticles";
 import NavBar from "./components/NavBar";
 
 const Router = () => (
@@ -19,6 +20,7 @@ const Router = () => (
       <Route exact path="/saved-articles" component={SavedArticles} />
       <Route exact path="/feed" component={Feed} />
       <Route exact path="/media" component={MediaSources} />
+      <Route exact path="/media-articles" component={MediaArticles} />
       <Route exact path="/logout" />
       <Route component={NotFound} />
     </Switch>

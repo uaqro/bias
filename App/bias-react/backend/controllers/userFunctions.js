@@ -12,7 +12,7 @@ exports.getFeed = async (req, res) => {
   const articles = await Article.find().populate({
     path: "fonts",
     populate: {
-      path: "Media",
+      path: "media",
       model: "Media"
     }
   });
@@ -45,6 +45,16 @@ exports.saveArticle = async (req, res) => {
     { new: true }
   );
   res.status(201).json({ usr });
+};
+
+exports.getMediaArticles = async (req, res) => {
+  const { id } = req.body;
+
+  const articles = await Font.find({ media: id });
+  const med = await Media.findById(id);
+  console.log(articles);
+  console.log(med);
+  res.status(200).json({ articles: articles, m: med[0] });
 };
 
 exports.getUserSavedArticlesArray = async (req, res) => {
