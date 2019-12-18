@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { NavBarLayout, NavBarBox } from "../styles/components";
 import { MyContext } from "../context";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 function NavBar(props) {
   return (
@@ -61,7 +62,7 @@ function NavBar(props) {
                       className="logout"
                       onClick={() =>
                         context.handleLogout(() => {
-                          this.props.history.push("/");
+                          props.history.push("/");
                         })
                       }
                     >
@@ -85,4 +86,4 @@ function NavBar(props) {
     </MyContext.Consumer>
   );
 }
-export default NavBar;
+export default withRouter(NavBar);

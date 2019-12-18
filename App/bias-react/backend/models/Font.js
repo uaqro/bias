@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const fontSchema = new Schema({
   headline: String,
-  subHead: String,
+  subhead: String,
   link: String,
   bias: Number,
   media: {

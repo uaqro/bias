@@ -1,6 +1,11 @@
 import React, { Component } from "react";
-//import { Link } from "react-router-dom";
-import { FeedDiv } from "../styles/components";
+import { Link } from "react-router-dom";
+import {
+  FeedDiv,
+  CenterizeMe,
+  Loader,
+  LoginRedirectButton
+} from "../styles/components";
 import { MyContext } from "../context";
 import ArticleCard from "./ArticleCard";
 import { PushSpinner } from "react-spinners-kit";
@@ -8,8 +13,7 @@ import { PushSpinner } from "react-spinners-kit";
 export default class Feed extends Component {
   state = {
     feed: [],
-    searchValue: "",
-    loading: true
+    searchValue: ""
   };
   componentDidMount = async () => {
     this.context.getFeed();
@@ -26,27 +30,55 @@ export default class Feed extends Component {
   // }
 
   render() {
-    const { loading } = this.state;
     const reg = new RegExp(this.state.searchValue);
     return (
       <MyContext.Consumer>
         {context => (
           <FeedDiv>
-            {loading ? (
-              <PushSpinner size={30} color="#686769" loading={loading} />
-            ) : null}
-            <h1>News Feed</h1>
-            <tag>Search</tag>
-            <input
-              type="text"
-              value={this.state.searchValue}
-              onChange={this.searchQuery}
-            />
-            {context.articlesfeed
-              //.filter(article => article.headline.match(reg))
-              .map((e, i) => (
-                <ArticleCard article={e} key={i} context={context} />
-              ))}
+            {context.loggedUser ? (
+              <>
+                {context.loading ? (
+                  <Loader>
+                    <CenterizeMe>
+                      <PushSpinner
+                        size={30}
+                        Color="#686769"
+                        loading={context.loading}
+                      />
+                      <p>Getting todays world...</p>
+                    </CenterizeMe>
+                  </Loader>
+                ) : (
+                  <>
+                    <h1>News Feed</h1>
+                    <tag>Search</tag>
+                    <input
+                      type="text"
+                      value={this.state.searchValue}
+                      onChange={this.searchQuery}
+                    />
+                    <>
+                      {context.articlesfeed
+                        .filter(article => article.headline.match(reg))
+                        .map((e, i) => (
+                          <ArticleCard article={e} key={i} context={context} />
+                        ))}
+                    </>
+                  </>
+                )}
+              </>
+            ) : (
+              <CenterizeMe>
+                <p>You need to be logged in to see the content.</p>
+                <LoginRedirectButton>
+                  <Link to="/login">Log In</Link>
+                </LoginRedirectButton>
+                <br />
+                <LoginRedirectButton>
+                  <Link to="/signup">Sign Up</Link>
+                </LoginRedirectButton>
+              </CenterizeMe>
+            )}
           </FeedDiv>
         )}
       </MyContext.Consumer>

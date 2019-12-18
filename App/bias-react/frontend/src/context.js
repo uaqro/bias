@@ -27,8 +27,8 @@ class MyProvider extends Component {
     articlesfeed: [],
     savedArticlesFeed: [],
     comment_article_update_key: 0,
-    allMediaArticles: [],
-    mediaDetail: {}
+    mediaDetail: {},
+    loading: true
   };
   componentDidMount() {
     if (document.cookie) {
@@ -64,9 +64,11 @@ class MyProvider extends Component {
     this.setState({ usr: papitas });
   };
   getFeed = async () => {
+    this.setState({ loading: true });
     const { data } = await MY_SERVICE.getFeed();
     const p = await this.getSArt();
     this.setState({ articlesfeed: data.articles });
+    this.setState({ loading: false });
   };
 
   getSavedArticles = async () => {
@@ -95,12 +97,11 @@ class MyProvider extends Component {
   };
   getAllMediaArticles = async (e, cb) => {
     e.preventDefault();
-    const { data } = await MY_SERVICE.getAllMediaArticles(e.target.id);
-
-    this.setState({ allMediaArticles: data.articles });
-    this.setState({ mediaDetail: data.m });
-    console.log(data.articles);
-    console.log(data.m);
+    this.setState({ loading: true });
+    const id = e.target.getAttribute("id");
+    const { data } = await MY_SERVICE.getAllMediaArticles(id);
+    this.setState({ mediaDetail: data.articles });
+    this.setState({ loading: false });
     cb();
   };
 
@@ -207,8 +208,9 @@ class MyProvider extends Component {
           state: this.state,
           toggleOpen: this.toggleOpen,
           getAllMediaArticles: this.getAllMediaArticles,
-          allMediaArticles: this.state.allMediaArticles,
-          mediaDetail: this.state.mediaDetail
+          // allMediaArticles: this.state.allMediaArticles,
+          mediaDetail: this.state.mediaDetail,
+          loading: this.state.loading
         }}
       >
         {this.props.children}

@@ -91,6 +91,9 @@ function ArticleCard(props) {
               <button type="submit">Post Comment</button>
             </form>
           </div>
+          <br />
+          <hr />
+          <br />
         </ArticleLayout>
       )}
     </MyContext.Consumer>

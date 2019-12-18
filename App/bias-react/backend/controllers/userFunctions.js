@@ -16,7 +16,6 @@ exports.getFeed = async (req, res) => {
       model: "Media"
     }
   });
-  console.log(articles[0].fonts);
   res.status(200).json({ articles });
 };
 
@@ -49,12 +48,10 @@ exports.saveArticle = async (req, res) => {
 
 exports.getMediaArticles = async (req, res) => {
   const { id } = req.body;
-
-  const articles = await Font.find({ media: id });
-  const med = await Media.findById(id);
-  console.log(articles);
-  console.log(med);
-  res.status(200).json({ articles: articles, m: med[0] });
+  console.log(req.body);
+  const MediaArticles = await Media.findById(id).populate("articles");
+  // const articles = await Font.find({ media: id }).populate("media");
+  res.status(201).json({ articles: MediaArticles });
 };
 
 exports.getUserSavedArticlesArray = async (req, res) => {

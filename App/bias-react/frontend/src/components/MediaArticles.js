@@ -1,6 +1,13 @@
 import React, { Component } from "react";
-//import { Link } from "react-router-dom";
-import { FeedDiv } from "../styles/components";
+import { Link } from "react-router-dom";
+import {
+  FeedDiv,
+  MediaArticle,
+  H2styled,
+  Myhr,
+  CenterizeMe,
+  LoginRedirectButton
+} from "../styles/components";
 import { MyContext } from "../context";
 import ArticleCard from "./ArticleCard";
 
@@ -24,18 +31,44 @@ export default class Feed extends Component {
       <MyContext.Consumer>
         {context => (
           <FeedDiv>
-            <h1>{context.mediaDetail.name}</h1>
-            <tag>Search</tag>
-            <input
-              type="text"
-              value={this.state.searchValue}
-              onChange={this.searchQuery}
-            />
-            {context.allMediaArticles
-              //.filter(article => article.headline.match(reg))
-              .map((e, i) => (
-                <ArticleCard article={e} key={i} context={context} />
-              ))}
+            {context.loggedUser ? (
+              <>
+                {/* <h1>{context.allMediaArticles[0].media.name}</h1> */}
+                <h1>{context.mediaDetail.name}</h1>
+                <tag>Search</tag>
+                <input
+                  type="text"
+                  value={this.state.searchValue}
+                  onChange={this.searchQuery}
+                />
+                <hr />
+                {context.mediaDetail.articles
+                  .filter(article => article.headline.match(reg))
+                  .map((e, i) => (
+                    <MediaArticle>
+                      <Link to={e.link}>
+                        <h2 className="font-secondary">{e.headline}</h2>
+                      </Link>
+                      <p>{e.subhead}</p>
+                      <div>
+                        <h4 className="bias-box">bias:{e.bias}</h4>
+                      </div>
+                      <Myhr></Myhr>
+                    </MediaArticle>
+                  ))}
+              </>
+            ) : (
+              <CenterizeMe>
+                <p>You need to be logged in to see the content.</p>
+                <LoginRedirectButton>
+                  <Link to="/login">Log In</Link>
+                </LoginRedirectButton>
+                <br />
+                <LoginRedirectButton>
+                  <Link to="/signup">Sign Up</Link>
+                </LoginRedirectButton>
+              </CenterizeMe>
+            )}
           </FeedDiv>
         )}
       </MyContext.Consumer>

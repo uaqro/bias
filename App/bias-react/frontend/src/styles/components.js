@@ -25,6 +25,7 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
 `;
 
+// typos
 export const Myh3 = styled.h3`
   font-family: "Old Standard TT", serif;
   margin: 6px 0;
@@ -35,6 +36,29 @@ export const Myhr = styled.hr`
   width: 80%;
   opacity: 60%;
 `;
+
+export const H2styled = styled.h2`
+  font-size: 1rem;
+  color: white;
+  background-color: black;
+  padding: 4px 10px;
+  text-align: left;
+  display: inline-block;
+  text-transform: uppercase;
+`;
+
+export const H2styledInversed = styled.h2`
+  font-size: 1rem;
+  color: black;
+  background-color: white;
+  border: 2px black solid;
+  padding: 4px 10px;
+  text-align: left;
+  display: inline-block;
+  text-transform: uppercase;
+`;
+
+// Media Sources components
 
 export const FeedDiv = styled.div`
   display: flex;
@@ -57,6 +81,72 @@ export const FeedDiv = styled.div`
     margin-bottom: 5%;
   }
 `;
+
+export const MediaCard = styled.div`
+  border: 2px solid ${colors.primary};
+  border-opacity: 60%;
+  padding: 0 6vw 6% 6vw;
+  margin: 5% 0;
+  text-align: left;
+  .media-card-header {
+    display: flex;
+    flex-direction: row;
+    img {
+      width: 25%;
+      height: 50px;
+      margin-left: 5%;
+    }
+    h1 {
+      margin: 0;
+    }
+    .media-version-h3 {
+      font-size: 1.6rem;
+    }
+  }
+`;
+
+export const MediaArticle = styled.div`
+  padding: 0 6vw 6% 6vw;
+  display: flex;
+  flex-direction: column;
+  .font-secondary {
+    font-family: "Old Standard TT", serif;
+    font-size: 1rem;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  p {
+    margin: 0;
+    text-align: justify;
+  }
+  hr {
+    width: 100%;
+  }
+  h2 {
+    margin: 0 0 8px 0;
+  }
+  input {
+    margin-bottom: 10% !important;
+  }
+  .bias-box {
+    font-size: 1rem;
+    color: white;
+    background-color: black;
+    padding: 4px 10px;
+    text-align: left;
+    text-transform: uppercase;
+    width: auto;
+    display: inline-block;
+  }
+`;
+
+// Media Sources components
+
 export const ArticleLayout = styled.article`
   box-sizing: border-box;
   border: 1px solid black;
@@ -97,23 +187,6 @@ export const ArticleLayout = styled.article`
   
 `;
 export const SavedArticles = styled.div``;
-export const MediaCard = styled.div`
-  border: 1px solid ${colors.primary};
-  padding: 0 9vw;
-  text-align: left;
-  .media-card-header {
-    display: flex;
-    flex-direction: row;
-    img {
-      width: 25%;
-      height: 50px;
-      margin-left: 5%;
-    }
-    h1 {
-      margin: 0;
-    }
-  }
-`;
 
 export const Mediabox = styled.div`
   display: flex;
@@ -180,6 +253,7 @@ export const LogWrapper = styled.div`
   }
 `;
 
+// Navigation bar
 export const NavBarBox = styled.div`
   width: 100vw;
   height: 60px;
@@ -300,27 +374,6 @@ export const NavBarLayout = styled.div`
 }
 `;
 
-export const H2styled = styled.h2`
-  font-size: 1rem;
-  color: white;
-  background-color: black;
-  padding: 4px 10px;
-  text-align: left;
-  display: inline-block;
-  text-transform: uppercase;
-`;
-
-export const H2styledInversed = styled.h2`
-  font-size: 1rem;
-  color: black;
-  background-color: white;
-  border: 2px black solid;
-  padding: 4px 10px;
-  text-align: left;
-  display: inline-block;
-  text-transform: uppercase;
-`;
-
 export const Home = styled.div`
   display: flex;
   flex-direction: column;
@@ -412,7 +465,7 @@ export const Home = styled.div`
 
 export const PrimaryButton = styled.button`
   border: 2px solid black;
-  padding: 6% 8%;
+  padding: 5% 7%;
   font-size: 1em;
   color: white;
   background-color: black;
@@ -420,6 +473,46 @@ export const PrimaryButton = styled.button`
   &:hover {
     color: black;
     background-color: white;
+    cursor: pointer;
+  }
+`;
+export const LoginRedirectButton = styled.div`
+  border: 2px solid black;
+  padding: 5% 7%;
+  color: white;
+  background-color: black;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  p {
+    margin-bottom: 25vh;
+  }
+  a {
+    display: flex;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+  }
+  &:hover {
+    color: black;
+    background-color: white;
+    cursor: pointer;
+  }
+`;
+
+export const SecondaryButton = styled.button`
+  border: 2px solid black;
+  padding: 5% 7%;
+  font-size: 1em;
+  color: black;
+  background-color: white;
+  width: 100%;
+  :hover {
+    color: white;
+    background-color: black;
+    cursor: pointer;
   }
 `;
 
@@ -526,7 +619,9 @@ export const SignUpTag = styled.div`
   }
 
 `;
-
+export const Loader = styled.div`
+  padding-top: 30vh;
+`;
 export const CenterizeMe = styled.div`
   display: flex;
   align-items: center;

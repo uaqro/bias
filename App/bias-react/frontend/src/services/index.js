@@ -54,7 +54,7 @@ const MY_SERVICE = {
     return await service.post("/add-article", { id: articleId });
   },
   getAllMediaArticles: async id => {
-    return await service.get("/media-articles", { id: id });
+    return await service.post("/media-articles", { id });
   }
 };
 
