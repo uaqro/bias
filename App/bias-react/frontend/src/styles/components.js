@@ -251,6 +251,10 @@ export const LogWrapper = styled.div`
       margin-bottom: 5%;
     }
   }
+  @media (min-width: 800px) {
+    width: 50%;
+    margin: 0 auto;
+  }
 `;
 
 // Navigation bar
@@ -299,6 +303,7 @@ export const NavBarLayout = styled.div`
       color:${colors.primary};
     }
   }
+ 
 
   .hamburgerMenuContainer {
     margin: 0;
@@ -326,6 +331,7 @@ export const NavBarLayout = styled.div`
   .hamburger {
     top: 45%;
   }
+ 
 
   .hamburger::before {
     top: -200%;
@@ -374,6 +380,25 @@ export const NavBarLayout = styled.div`
 }
 `;
 
+export const Bordersections = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  p {
+    margin: 20px 0 50px 0;
+    width: 64%;
+    color: ${colors.secondary};
+  }
+  @media (min-width: 800px) {
+    width: 100%;
+    border-sizing: border-box;
+    p {
+      width: 50%;
+    }
+  }
+`;
+
 export const Home = styled.div`
   display: flex;
   flex-direction: column;
@@ -382,6 +407,7 @@ export const Home = styled.div`
   align-items: center;
   margin: 0;
   padding: 0;
+
   @media (max-width: 768px) {
     margin-top: 20%;
   }
@@ -414,6 +440,19 @@ export const Home = styled.div`
       width: 75px;
     }
   }
+
+  // desktop version
+  @media (min-width: 800px) {
+    margin-top: 10%;
+    .stats-box {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+    .sub-stats-box {
+      width: 360px;
+    }
+  }
+
   h1:first-of-type {
     padding-top: 10vh;
     font-size: 4em;
@@ -471,11 +510,18 @@ export const PrimaryButton = styled.button`
   background-color: black;
   width: 100%;
   &:hover {
-    color: black;
+    color: black !important;
     background-color: white;
     cursor: pointer;
   }
+  // desktop version
+  @media (min-width: 800px) {
+    width: 200px;
+    padding: 3% 1.8%;
+    margin: 0 auto;
+  }
 `;
+
 export const LoginRedirectButton = styled.div`
   border: 2px solid black;
   padding: 5% 7%;
@@ -496,9 +542,16 @@ export const LoginRedirectButton = styled.div`
     color: white;
   }
   &:hover {
-    color: black;
+    color: black !important;
     background-color: white;
     cursor: pointer;
+    a {
+      color: black;
+    }
+  }
+  @media (min-width: 800px) {
+    width: 200px;
+    padding: 3% 1.8%;
   }
 `;
 
@@ -514,17 +567,9 @@ export const SecondaryButton = styled.button`
     background-color: black;
     cursor: pointer;
   }
-`;
-
-export const Bordersections = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  p {
-    margin: 20px 0 50px 0;
-    width: 64%;
-    color: ${colors.secondary};
+  @media (min-width: 800px) {
+    width: 200px;
+    padding: 3% 1.8%;
   }
 `;
 
@@ -615,6 +660,13 @@ export const SignUpTag = styled.div`
   p{
     margin-bottom: 8px;
     alignt-text: center;
+
+  }
+  // desktop version
+  @media (min-width: 800px) {
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 100px;
 
   }
 

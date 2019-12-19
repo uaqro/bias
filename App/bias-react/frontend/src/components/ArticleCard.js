@@ -1,5 +1,4 @@
-import React, { Component, memo, useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import { ArticleLayout, MainButton } from "../styles/components";
 import Tree from "./Tree";
 import { MyContext } from "../context";
@@ -18,7 +17,7 @@ function ArticleCard(props) {
                 onClick={e => context.removeArticle(e)}
                 //value={context.usr.includes(props.article._id) ? "Saved" : "Save"}
                 id={props.article._id}
-                key={props.key}
+                val={props.val}
               />
             ) : (
               <img
@@ -27,7 +26,7 @@ function ArticleCard(props) {
                 onClick={e => context.saveArticle(e)}
                 //value={context.usr.includes(props.article._id) ? "Saved" : "Save"}
                 id={props.article._id}
-                key={props.key}
+                val={props.val}
               />
             )}
           </div>
@@ -71,7 +70,7 @@ function ArticleCard(props) {
                       context.deleteComment(e);
                     }}
                     id={c._id}
-                    key={i}
+                    val={i}
                     articleinfo={props.article._id}
                   >
                     DeleteComment
@@ -84,7 +83,7 @@ function ArticleCard(props) {
                 type="text"
                 name="comment-body"
                 id={props.article._id}
-                key={props.key}
+                val={props.val}
                 value={context.comment.body}
                 onChange={context.handleCommentInput}
               />

@@ -3,13 +3,11 @@ import { Link } from "react-router-dom";
 import {
   FeedDiv,
   MediaArticle,
-  H2styled,
   Myhr,
   CenterizeMe,
   LoginRedirectButton
 } from "../styles/components";
 import { MyContext } from "../context";
-import ArticleCard from "./ArticleCard";
 
 export default class Feed extends Component {
   state = {

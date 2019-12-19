@@ -1,6 +1,5 @@
-import React, { Component, memo, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import Tree from "./Tree";
 import { MyContext } from "../context";
 
 function Privacy(props) {

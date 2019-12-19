@@ -31,19 +31,17 @@ class MyProvider extends Component {
     loading: true
   };
   componentDidMount() {
-    if (document.cookie) {
-      MY_SERVICE.getUser()
-        .then(({ data }) => {
-          this.setState({ loggedUser: true, user: data.user });
-          Swal.fire(`Welcome back ${data.user.name} `, "", "success");
-        })
-        .catch(err => console.log(err));
-    }
+    MY_SERVICE.getUser()
+      .then(({ data }) => {
+        console.log(data);
+        this.setState({ loggedUser: true, user: data.user });
+        Swal.fire(`Welcome back ${data.user.username} `, "", "success");
+      })
+      .catch(err => console.log(err));
   }
   //************ GET FEED */
   toggleOpen() {
     var hamburger = document.querySelector(".hamburger");
-    var hamburgerContainer = document.querySelector(".hamburgerMenuContainer");
     var menu = document.querySelector(".navlinks");
     hamburger.classList.toggle("animate");
     if (menu.classList.contains("hide")) {
@@ -66,7 +64,7 @@ class MyProvider extends Component {
   getFeed = async () => {
     this.setState({ loading: true });
     const { data } = await MY_SERVICE.getFeed();
-    const p = await this.getSArt();
+    await this.getSArt();
     this.setState({ articlesfeed: data.articles });
     this.setState({ loading: false });
   };

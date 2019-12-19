@@ -56,7 +56,7 @@ export default class MediaSources extends Component {
                       value={this.state.searchValue}
                     />
                     {this.state.media
-                      //.filter(article => article.headline.match(reg))
+                      .filter(article => article.name.match(reg))
                       .map(m => (
                         <MediaCard>
                           <div className="media-card-header">

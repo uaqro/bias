@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 //import { Home } from "../styles/components";
 import { NavBarLayout, NavBarBox } from "../styles/components";
 import { MyContext } from "../context";

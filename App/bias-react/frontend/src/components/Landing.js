@@ -73,9 +73,9 @@ export default class Landing extends Component {
               <div className="stats-box why-box">
                 <div className="sub-stats-box">
                   <img src="./cloud.png" alt="data" />
-                  <p>
-                    <H2styledInversed>Keep your privacy.</H2styledInversed>
-                  </p>
+                  <div>
+                    <H2styledInversed>Keep your privacy</H2styledInversed>
+                  </div>
                   <p>
                     bias will not share your personal data. That means you are
                     less likely to get political targeted adds or fake news
@@ -85,9 +85,9 @@ export default class Landing extends Component {
                 </div>
                 <div className="sub-stats-box">
                   <img src="./artificial-intelligence.png" alt="data" />
-                  <p>
+                  <div>
                     <H2styledInversed>Be aware</H2styledInversed>
-                  </p>
+                  </div>
                   <p>
                     Get the full story from all sources availables. Know the
                     shades by getting the counterparts to every truth.
@@ -96,9 +96,9 @@ export default class Landing extends Component {
                 </div>
                 <div className="sub-stats-box">
                   <img src="./clock.png" alt="data" />
-                  <p>
+                  <div>
                     <H2styledInversed>Time efficient</H2styledInversed>
-                  </p>
+                  </div>
                   <p>You will get the main news, clustered and summarized.</p>
                   <br />
                 </div>

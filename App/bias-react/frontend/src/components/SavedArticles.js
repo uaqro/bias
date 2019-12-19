@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import {
   FeedDiv,
-  ArticleLayout,
   CenterizeMe,
   LoginRedirectButton
 } from "../styles/components";

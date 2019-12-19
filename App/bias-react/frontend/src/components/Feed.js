@@ -51,7 +51,7 @@ export default class Feed extends Component {
                 ) : (
                   <>
                     <h1>News Feed</h1>
-                    <tag>Search</tag>
+                    <div>Search</div>
                     <input
                       type="text"
                       value={this.state.searchValue}
@@ -61,7 +61,7 @@ export default class Feed extends Component {
                       {context.articlesfeed
                         .filter(article => article.headline.match(reg))
                         .map((e, i) => (
-                          <ArticleCard article={e} key={i} context={context} />
+                          <ArticleCard article={e} val={i} context={context} />
                         ))}
                     </>
                   </>
