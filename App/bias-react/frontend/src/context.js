@@ -168,7 +168,7 @@ class MyProvider extends Component {
         cb();
       })
       .catch(err => {
-        Swal.fire(`Quien sabe que paso`, "☠️", "error");
+        Swal.fire(`Incorrect email or password`, "☠️", "error");
       });
   };
 

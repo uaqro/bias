@@ -4,7 +4,8 @@ import {
   FeedDiv,
   CenterizeMe,
   Loader,
-  LoginRedirectButton
+  LoginRedirectButton,
+  CardContainer
 } from "../styles/components";
 import { MyContext } from "../context";
 import ArticleCard from "./ArticleCard";
@@ -57,13 +58,13 @@ export default class Feed extends Component {
                       value={this.state.searchValue}
                       onChange={this.searchQuery}
                     />
-                    <>
+                    <CardContainer>
                       {context.articlesfeed
                         .filter(article => article.headline.match(reg))
                         .map((e, i) => (
                           <ArticleCard article={e} val={i} context={context} />
                         ))}
-                    </>
+                    </CardContainer>
                   </>
                 )}
               </>

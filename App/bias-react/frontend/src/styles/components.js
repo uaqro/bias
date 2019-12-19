@@ -82,6 +82,15 @@ export const FeedDiv = styled.div`
   }
 `;
 
+export const CardContainer = styled.div`
+  @media (min-width: 800px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+`;
+
 export const MediaCard = styled.div`
   border: 2px solid ${colors.primary};
   border-opacity: 60%;
@@ -102,6 +111,9 @@ export const MediaCard = styled.div`
     .media-version-h3 {
       font-size: 1.6rem;
     }
+  }
+  @media (min-width: 800px) {
+    width: 46%;
   }
 `;
 
@@ -151,7 +163,9 @@ export const ArticleLayout = styled.article`
   box-sizing: border-box;
   border: 1px solid black;
   padding: 0 5%;
-  img{
+  margin-bottom: 40px;
+
+  img {
     padding-top: 10%;
     width: 25px;
     height: 25px;
@@ -168,23 +182,41 @@ export const ArticleLayout = styled.article`
       text-decoration: underline;
     }
   }
+  @media (min-width: 800px) {
+    width: 30%;
+    padding: 0 2%;
+    p {
+      font-size: 0.9rem;
+    }
+    .article-head {
+      & > h1 {
+        font-size: 1rem;
+      }
+    }
+  }
   input {
     margin-right: 2%;
   }
-  .fonts-wrapper{
+  .fonts-wrapper {
     padding-bottom: 5%;
-    box-sizing:border-box;
+    box-sizing: border-box;
     border-bottom: 1px solid black;
     width: 50%;
   }
   button {
-    padding: 1% 3%;
+    padding: 3% 3%;
     border: 1px solid black;
+    width: 100%;
     &:hover {
-      color:white;
+      color: white;
       background-color: black;
+    }
   }
-  
+  @media (min-width: 800px){
+    button{
+      padding: 4% 3%;
+
+    }
 `;
 export const SavedArticles = styled.div``;
 

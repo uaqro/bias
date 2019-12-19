@@ -1,6 +1,5 @@
 import axios from "axios";
 const baseURL = "https://desolate-basin-39120.herokuapp.com";
-// const baseURL = "https://localhost:3000";
 
 const service = axios.create({ withCredentials: true, baseURL });
 
