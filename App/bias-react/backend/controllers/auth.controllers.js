@@ -20,7 +20,6 @@ exports.logout = (req, res) => {
   res.json({ msg: "The user logged out successfully" });
 };
 exports.loggedin = (req, res, next) => {
-  console.log(req.user._id);
   User.findById(req.user._id)
     .then(user => res.status(200).json({ user }))
     .catch(err => res.status(500).json({ err }));
